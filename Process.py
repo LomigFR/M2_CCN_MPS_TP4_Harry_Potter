@@ -6,6 +6,9 @@ Created on Sat Jan 18 18:20:50 2020
 @author: guillaume_collet
 """
 
+choixContenus = ["avancer", "reculer", ]
+
+
 def initialisation(listeFioles):
     # La potion 1 étant tout à gauche, elle ne peut être "précédée" par une
     # fiole de poison, donc son contenu ne peut être de l'ortie :
@@ -19,8 +22,8 @@ def initialisation(listeFioles):
     listeFioles[2].setPoison(False)
     listeFioles[5].setPoison(False)
     
-    # Les contenus des fioles 2 et 6 sont les mêmes :
-    listeFioles[1].set
+    # Les contenus des fioles 2 et 6 sont les mêmes => la fiole 2 ne peut donc pas contenir de poison :
+    listeFioles[1].setPoison(False)
 
 def traitementVinPoison(listeFioles):
     for bottle in listeFioles:
@@ -29,6 +32,13 @@ def traitementVinPoison(listeFioles):
 def traitement1et7(listeFiole):
     listeFiole[0]4
 
-def Traitement(listeFioles):
-    
-    
+# Les contenus des fioles 2 et 6 sont les mêmes :
+def traitement2egal6(listeFioles):
+    if(listeFioles[1].getContenu() != ""):
+        listeFioles[5].setContenu(listeFiole[1].getContenu())
+    if(listeFioles[5].getContenu() != ""):
+        listeFioles[1].setContenu(listeFiole[5].getContenu())
+
+def traitement1egal7(listeFioles, contenu):
+    for content in contenu.getContents:
+        if(listeFioles[0].

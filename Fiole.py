@@ -46,15 +46,20 @@ class Bottle:
     def getId(self):
         return self.id
     
-    def setContenu(self):
-        if(self.poison):
-            contenu = "Poison"
-        elif(self.ortie):
-            contenu = "Ortie"
-        elif(self.reculer):
-            contenu = "Reculer"
-        else:
-            contenu = "Avancer"
+    def setContenu(self, valueContenu):
+        self.contenu = valueContenu
     
     def getContenu(self):
         return self.contenu
+    
+    def getContenuChoix(self, content):
+        tempContent = ""
+        if(content == "poison"):
+            tempContent = self.poison
+        elif(content == "ortie"):
+            tempContent = self.ortie
+        elif(content == "avancer"):
+            tempContent = self.avancer
+        else(content == "reculer"):
+            tempContent = self.reculer
+        return tempContent
