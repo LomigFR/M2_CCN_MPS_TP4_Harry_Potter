@@ -7,21 +7,21 @@ class Launch:
 
     """Lance l'exécution de la séquence des méthodes relatives au traitement de l'énigme :"""
     def run(self):
-        while(decompteTrue != 7):
-            init()
-            traitement2egale6(self.listeFioles)
-            traitement1different7(self.listeFioles, self.contenus)
-            traitementPoisonVsOrtie(self.listeFioles)
-            eliminationOrtie(self.listeFioles)
-            deductionFalseByTrue(self.listeFioles)
-            deductionTrueByFalse(self.listeFioles)
-            ecritureContenuFinal(self.listeFioles)
+        while(self.decompteTrue(self.listeFioles) != 7):
+            self.init()
+            self.traitement2egale6(self.listeFioles)
+            self.traitement1different7(self.listeFioles, self.contenus)
+            self.traitementPoisonVsOrtie(self.listeFioles)
+            self.eliminationOrtie(self.listeFioles)
+            self.deductionFalseByTrue(self.listeFioles)
+            self.deductionTrueByFalse(self.listeFioles)
+            self.ecritureContenuFinal(self.listeFioles)
 
     """Permet d'effectuer les réglages de certains états de contenus potentiels en fonction de l'énoncé de l'énigme :"""
     def init(self):
         """Ni la fiole 3 ni la fiole 6 ne contient du poison :"""
-        listeFioles[2].setPoison(False)
-        listeFioles[5].setPoison(False)
+        self.listeFioles[2].setPoison(False)
+        self.listeFioles[5].setPoison(False)
     
     """Les contenus des fioles 2 et 6 sont les mêmes. On en déduit que :
          => la fiole 2 ne peut donc pas contenir de poison (puisque la 6 n'en contient pas)
@@ -71,7 +71,7 @@ class Launch:
 
     """Mettre les contenus d'ortie à false pour toutes les autres fioles une fois qu'on a trouvé les 2 qui en contiennent :"""
     def eliminationOrtie(self, listeFioles):
-        if(decompteOrtie(listeFioles) == 2):
+        if(self.decompteOrtie(listeFioles) == 2):
             for bottle in listeFioles:
                 if(bottle.getOrtie() != True):
                     bottle.setOrtie(False)
@@ -86,14 +86,14 @@ class Launch:
     """Parce qu'il y a 3 false dans les contenus potentiels d'une fiole, le 4ème contenu est obligatoirement à true :"""
     def deductionTrueByFalse(self, listeFioles):
         for bottle in listeFioles:
-            if(decompteFalse(bottle) == 3):
+            if(self.decompteFalse(bottle) == 3):
                 for i in range(4):
                     if(bottle.getListeContenu()[i] != False):
                         bottle.getListeContenu()[i] = True
 
     """Ecriture de la variable String contenuFinal d'une fiole :"""
     def ecritureContenuFinal(self, listeFioles):
-        for bottle in listeFiole:
+        for bottle in self.listeFiole:
             if(bottle.getOrtie()):
                 bottle.setContenuFinal("ortie")
             elif(bottle.getPoison()):
@@ -111,7 +111,7 @@ class Launch:
                 temp += 1
         return temp
 
-    """Décompte des contenus à true pour l'ensemble des fioles :"""
+    """Décompte des contenus à True pour l'ensemble des fioles :"""
     def decompteTrue(self, listeFioles):
         temp = 0
         for bottle in listeFioles:
